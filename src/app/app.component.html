@@ -1,0 +1,49 @@
+<div class="row" style="padding-top:200px; margin-left:200px;">
+  <div class="col">
+
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownForm1" ngbDropdownToggle>Types:{{selectedPeople[0] }} Bug (+1)
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="dropdowselect-check">
+
+        <ng-select [items]="people" [multiple]="true" bindLabel="name" groupBy="gender" [selectableGroup]="true"
+          [closeOnSelect]="false" bindValue="name" name="person" [(ngModel)]="selectedPeople" (change)="getValues()">
+          <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.gender | uppercase}}
+          </ng-template>
+
+        </ng-select>
+
+        <!--           <ng-select  
+                #MyNgSelect            
+                bindLabel="name"
+                placeholder="Select item"
+                appendTo="body"
+                multiple="true"
+                [searchable]="true" 
+                [clearable]="true"
+                [closeOnSelect]="false"
+                [(ngModel)]="selected"
+                (change)="getValues()">
+                <ng-option [value]="item.id" [disabled]="item.disabled" *ngFor="let item of items">
+                    <img src="./assets/{{item.image}}" width="20px" height="20px"/>
+                    {{item.name}}
+                </ng-option>
+    </ng-select> -->
+
+        <!-- Default unchecked -->
+  <!--       <div class="ws-multiselect-group">
+          <form #f="ngForm">
+            <div class="ws-checkbox" *ngFor="let p of people; let i = index">
+              <input type="checkbox" class="ws-checkbox-input" name="people" id="item-{{i}}" [(ngModel)]="ischecked[i]">
+              <label class="ws-checkbox-label">{{p.name}}</label>
+            </div>
+          </form>
+        </div> -->
+
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-item text-right" (click)="clearAll(i)"> X Clear</span>
+      </div>
+    </div>
+  </div>
+</div>
